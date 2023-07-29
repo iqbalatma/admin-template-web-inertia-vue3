@@ -1,6 +1,8 @@
 <?php
 
+use App\Enums\Permission;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Management\PermissionController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -16,6 +18,11 @@ use Inertia\Inertia;
 */
 
 Route::middleware("auth")->group(function (){
+    Route::prefix("management")->group(function (){
+        Route::get("permissions", PermissionController::class)->name("permissions.index")->middleware("permission:".Permission::PERMISSIONS_INDEX());
+    });
+
+
     Route::get('/', function () {
         return Inertia::render('Welcome', [
             'laravel' => \Illuminate\Foundation\Application::VERSION,

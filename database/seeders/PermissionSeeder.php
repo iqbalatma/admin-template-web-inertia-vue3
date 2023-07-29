@@ -20,5 +20,7 @@ class PermissionSeeder extends Seeder
                 "feature" => $permission->featureGroup()
             ]);
         }
+
+//        \App\Models\Permission::factory()->count(100)->create();
     }
 }

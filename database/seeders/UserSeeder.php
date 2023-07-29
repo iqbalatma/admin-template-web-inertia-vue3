@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         foreach (self::DATA_USER as $key => $user){
-            User::create($user);
+            User::create($user)->assignRole("superadmin");
         }
     }
 }

@@ -4,6 +4,7 @@ import {createInertiaApp, Link} from '@inertiajs/vue3';
 import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers';
 import Layout from "./Shared/Layout.vue";
 import "@fortawesome/fontawesome-free";
+import dateFormatter from "./Plugins/DateFormatter.js";
 
 createInertiaApp({
     progress: {
@@ -27,6 +28,7 @@ createInertiaApp({
         return createApp({render: () => h(App, props)})
             .mixin({methods: {route}})
             .use(plugin)
+            .use(dateFormatter)
             .component("Link", Link)
             .mount(el)
     },
