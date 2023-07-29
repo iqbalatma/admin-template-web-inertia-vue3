@@ -2,9 +2,13 @@
 import Navbar from "./Navbar.vue";
 import Sidebar from "./Sidebar.vue";
 import Footer from "./Footer.vue";
+import {Head} from "@inertiajs/vue3";
 
 export default {
-    components: {Footer, Sidebar, Navbar},
+    components: {Head, Footer, Sidebar, Navbar},
+    props:{
+        title: String
+    },
     mounted() {
         const githubButton = document.createElement("script");
         githubButton.setAttribute(
@@ -25,6 +29,11 @@ export default {
 
 
 <template>
+
+    <Head>
+        <title>{{title??"SD Negeri 2 Selakau"}}</title>
+    </Head>
+
     <!-- This is an example component -->
     <div>
         <Navbar></Navbar>

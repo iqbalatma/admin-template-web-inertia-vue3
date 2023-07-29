@@ -1,13 +1,16 @@
 <script>
-import {useForm} from "@inertiajs/vue3";
-
 export default {
     layout: null,
+    props:{
+        title: String
+    }
 }
 </script>
 
 <script setup>
-import {useForm} from "@inertiajs/vue3";
+import {Head, useForm} from "@inertiajs/vue3";
+
+
 
 const form = useForm({
     email: "",
@@ -17,9 +20,13 @@ const form = useForm({
 let submit = () => {
     form.post("/auth/authenticate")
 }
+
 </script>
 
 <template>
+    <Head>
+        <title>{{title  }}</title>
+    </Head>
     <!-- component -->
     <div class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
         <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">

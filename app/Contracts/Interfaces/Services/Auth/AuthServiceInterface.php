@@ -4,5 +4,5 @@ namespace App\Contracts\Interfaces\Services\Auth;
 
 interface AuthServiceInterface
 {
-    public function authenticate(array $credentials);
+    public function authenticate(array $credentials):bool;
 }

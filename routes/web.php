@@ -20,6 +20,7 @@ Route::middleware("auth")->group(function (){
         return Inertia::render('Welcome', [
             'laravel' => \Illuminate\Foundation\Application::VERSION,
             'php' => PHP_VERSION,
+            'title' => "Halo World"
         ]);
     });
 
@@ -37,6 +38,7 @@ Route::middleware("auth")->group(function (){
 });
 
 Route::prefix("auth")->name("auth.")->controller(AuthController::class)->group(function (){
-    Route::get("", "login")->name("login");
-    Route::post("authenticate", "authenticate")->name("authenticate");
+    Route::get("", "login")->name("login")->middleware("guest");
+    Route::post("authenticate", "authenticate")->name("authenticate")->middleware("guest");
+    Route::post("logout", "logout")->name("logout")->middleware("auth");
 });
